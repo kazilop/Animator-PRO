@@ -198,7 +198,7 @@ const App: React.FC = () => {
                      // Remove existing key at this frame
                      track.keyframes = track.keyframes.filter(k => k.time !== currentFrame);
                      // Add new key
-                     track.keyframes.push({ time: currentFrame, value: val });
+                     track.keyframes.push({ time: currentFrame, value: val, easing: 'linear' });
                  }
             };
 
@@ -291,7 +291,7 @@ const App: React.FC = () => {
           }
           if (rotTrack.keyframes) {
             rotTrack.keyframes = rotTrack.keyframes.filter(k => k.time !== currentFrame);
-            rotTrack.keyframes.push({ time: currentFrame, value: bone.rotation });
+            rotTrack.keyframes.push({ time: currentFrame, value: bone.rotation, easing: 'linear' });
           }
 
           // Position Keys (if root/IK moved)
@@ -300,14 +300,14 @@ const App: React.FC = () => {
              if (!xTrack) { xTrack = { boneId: bone.id, property: 'x', keyframes: [] }; newTracks.push(xTrack); }
              if (xTrack.keyframes) {
                  xTrack.keyframes = xTrack.keyframes.filter(k => k.time !== currentFrame);
-                 xTrack.keyframes.push({ time: currentFrame, value: bone.x });
+                 xTrack.keyframes.push({ time: currentFrame, value: bone.x, easing: 'linear' });
              }
 
              let yTrack = newTracks.find(t => t.boneId === bone.id && t.property === 'y');
              if (!yTrack) { yTrack = { boneId: bone.id, property: 'y', keyframes: [] }; newTracks.push(yTrack); }
              if (yTrack.keyframes) {
                  yTrack.keyframes = yTrack.keyframes.filter(k => k.time !== currentFrame);
-                 yTrack.keyframes.push({ time: currentFrame, value: bone.y });
+                 yTrack.keyframes.push({ time: currentFrame, value: bone.y, easing: 'linear' });
              }
           }
 
